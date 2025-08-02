@@ -1,0 +1,1 @@
+# Kontrol darurat via SMS (GSM modem)

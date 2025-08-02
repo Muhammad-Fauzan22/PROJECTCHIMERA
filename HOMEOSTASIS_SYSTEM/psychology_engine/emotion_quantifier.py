@@ -1,0 +1,1 @@
+# Mengukur sentimen pasar sebagai 'emosi' (Fear/Greed)

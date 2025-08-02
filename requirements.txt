@@ -1,0 +1,44 @@
+﻿# ==================================================
+# ==      DEPENDENSI PROYEK - PROJECT CHIMERA     ==
+# ==================================================
+# Doktrin: Ini adalah satu-satunya sumber kebenaran untuk dependensi.
+
+# --- Core & Data Handling ---
+pandas
+numpy
+toml
+pyarrow
+
+# --- Jaringan & API Bursa ---
+requests
+aiohttp
+ccxt
+
+# --- Penjadwalan ---
+apscheduler
+
+# --- Database & Memori Vektor ---
+duckdb
+chromadb
+
+# --- Web Scraping & Parsing ---
+beautifulsoup4
+playwright
+scrapy
+scrapy-ai
+scrapegraphai
+seleniumbase
+newspaper3k
+feedparser
+
+# --- Integrasi Model AI ---
+google-generativeai
+python-dotenv
+transformers
+torch
+datasets
+
+# --- Google Drive Integration ---
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib

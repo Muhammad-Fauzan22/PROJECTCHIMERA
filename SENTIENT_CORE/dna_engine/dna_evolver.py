@@ -1,0 +1,1 @@
+# Mutasi & crossover DNA strategi untuk adaptasi

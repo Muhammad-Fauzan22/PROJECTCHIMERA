@@ -1,0 +1,1 @@
+# Strategi 'fading' volatilitas pasca berita besar

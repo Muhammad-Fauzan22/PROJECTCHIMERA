@@ -1,0 +1,1 @@
+# Strategi eksploitasi kluster likuidasi

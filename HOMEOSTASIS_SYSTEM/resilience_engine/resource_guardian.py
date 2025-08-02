@@ -1,0 +1,1 @@
+# Pemantau CPU/RAM agar tidak overheat

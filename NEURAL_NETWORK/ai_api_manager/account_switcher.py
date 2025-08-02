@@ -1,0 +1,1 @@
+# Rotasi otomatis akun API (Claude, Gemini, dll.)

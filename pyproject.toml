@@ -1,0 +1,25 @@
+﻿[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = [
+    "AGENTS",
+    "AI_BRAIN",
+    "COLLECTIVE_MEMORY",
+    "CONFIG",
+    "DATA_INGESTION_ENGINE",
+    "EXECUTION_SYSTEM",
+    "GLOBAL_ANALYZER",
+    "PERCEPTION_SYSTEM",
+    "RESILIENCE_SYSTEM",
+    "SENTIENT_CORE",
+    "STRATEGIC_CORTEX",
+    "WEB_SCRAPERS"
+]
+
+[tool.setuptools.package_data]
+"*" = ["*.py"]
+
+[tool.setuptools.exclude_package_data]
+"*" = ["__pycache__/*", "*.py[cod]"]

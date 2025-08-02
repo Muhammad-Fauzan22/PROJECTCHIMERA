@@ -1,0 +1,22 @@
+# Konfigurasi Utama Project Chimera
+
+[system]
+cycle_interval_minutes = 60
+log_level = "INFO"
+project_name = "Project Chimera"
+
+[apis]
+# Konfigurasi untuk API Router
+# Prioritas: daftar model LLM yang akan dicoba secara berurutan
+llm_priority = ["gemini", "openai", "anthropic"]
+
+[analysis_pillars.macroeconomics]
+enabled = true
+schedule_cron = "0 1 * * *" # Setiap hari jam 1 pagi UTC
+keywords = ["Federal Reserve", "ECB", "geopolitics", "crypto regulation", "ETF"]
+
+[analysis_pillars.market_microstructure]
+enabled = true
+schedule_cron = "*/30 * * * *" # Setiap 30 menit
+target_asset_count = 10
+metrics = ["open_interest", "funding_rate"]

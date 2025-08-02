@@ -1,0 +1,54 @@
+# ==================================================#
+# == TARGET MISI SCRAPING - PROJECT CHIMERA ==     #
+# ==================================================#
+# Definisikan target scraping di sini.             #
+# Bot akan secara otomatis menghasilkan spider.    #
+
+[bloomberg_crypto_headlines]
+# Misi: Mengambil judul berita utama dari halaman crypto Bloomberg
+url = "https://www.bloomberg.com/topics/crypto-currencies"
+# Skema data yang ingin diekstrak (untuk scrapy-ai)
+schema = """
+{
+  "headlines": "h1.BloombergHero-storyLink, h2.BloombergItem-title, h3.BloombergItem-title",
+  "summaries": "p.BloombergItem-description",
+  "links": "a.BloombergItem-storyLink"
+}
+"""
+# Seberapa dalam bot harus menjelajah (1 = hanya halaman utama)
+depth = 2
+
+[cointelegraph_market_news]
+# Misi: Mengambil berita pasar terbaru dari Cointelegraph
+url = "https://cointelegraph.com/tags/markets"
+schema = """
+{
+  "title": "span.post-card__title",
+  "summary": "p.post-card__text",
+  "url": "a.post-card__figure-link"
+}
+"""
+depth = 1
+
+# --- Contoh Misi Tambahan untuk ScrapeGraphAI ---
+# Misi ini menggunakan prompt bahasa alami alih-alih schema JSON.
+# Cocok untuk situs kompleks atau saat Anda ingin fleksibilitas lebih.
+
+[coindesk_latest_analysis]
+url = "https://www.coindesk.com/layer2/category/latest-analysis"
+# Prompt untuk ScrapeGraphAI
+prompt = "Buat daftar artikel terbaru. Untuk setiap artikel, ambil 'judul', 'ringkasan', dan 'url'."
+# Metode scraping (opsional, default scrapy-ai)
+method = "scrapegraphai"
+
+# --- Contoh Misi Tambahan untuk Selenium ---
+# Misi ini menggunakan Selenium untuk situs yang membutuhkan interaksi JS.
+
+[example_dynamic_site]
+url = "https://example.com/dynamic-content"
+# Selector CSS untuk elemen yang ingin diambil
+element_selector = "div.dynamic-item"
+# Metode scraping
+method = "selenium"
+
+# Tambahkan misi lain sesuai kebutuhan

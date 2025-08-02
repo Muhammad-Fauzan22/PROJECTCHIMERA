@@ -1,0 +1,9 @@
+# Dependensi Pengembangan
+pytest
+pytest-cov
+pytest-asyncio
+black
+ruff
+mypy
+pip-tools
+ipykernel

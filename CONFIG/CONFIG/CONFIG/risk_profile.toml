@@ -1,0 +1,25 @@
+﻿# -*- coding: utf-8 -*-
+# ==============================================================================
+# == PROFIL RISIKO - PROJECT CHIMERA ==
+# ==============================================================================
+
+[maximum_drawdown]
+threshold_percent = 20.0
+action = "reduce_position_size"
+
+[volatility]
+atr_lookback_period = 14
+atr_multiplier_for_stop_loss = 2.0
+
+[portfolio]
+max_correlation_between_assets = 0.7
+diversification_required = true
+
+[leverage]
+max_allowed_leverage = 10
+default_leverage = 5
+
+[position_sizing]
+base_risk_per_trade_percent = 1.0
+minimum_position_value_idr = 50000
+maximum_position_value_idr = 5000000

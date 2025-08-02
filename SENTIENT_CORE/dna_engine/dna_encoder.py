@@ -1,0 +1,1 @@
+# Mengubah strategi sukses menjadi DNA 128-bit

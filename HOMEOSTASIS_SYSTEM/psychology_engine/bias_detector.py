@@ -1,0 +1,1 @@
+# Deteksi bias (FOMO, Revenge Trading) dari pola trading

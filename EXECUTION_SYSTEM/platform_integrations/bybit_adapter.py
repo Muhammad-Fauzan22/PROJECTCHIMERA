@@ -1,0 +1,1 @@
+# Adapter untuk failover ke Bybit

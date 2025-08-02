@@ -1,0 +1,36 @@
+﻿# -*- coding: utf-8 -*-
+# ==============================================================================
+# == KONFIGURASI UTAMA - PROJECT CHIMERA ==
+# ==============================================================================
+
+[system]
+mode = "development"
+cognitive_loop_interval_seconds = 15
+api_timeout_seconds = 10
+api_max_retries = 3
+api_retry_delay_base_seconds = 1.0
+
+[market]
+assets = ["BTC/USDT", "ETH/USDT"]
+fiat_currency = "IDR"
+
+[logging]
+log_level = "INFO"
+log_file_path = "COLLECTIVE_MEMORY/chimera_main.log"
+
+[gdrive]
+raw_data_folder_id = "YOUR_RAW_DATA_FOLDER_ID_HERE"
+analysis_results_folder_id = "YOUR_ANALYSIS_RESULTS_FOLDER_ID_HERE"
+performance_reports_folder_id = "YOUR_PERFORMANCE_REPORTS_FOLDER_ID_HERE"
+
+[risk_management]
+max_risk_per_trade_percent = 1.0
+max_open_positions = 5
+atr_multiplier_for_stop_loss = 2.0
+max_leverage = 10
+
+[position_sizing]
+method = "percent_risk"
+fixed_position_value_idr = 100000
+base_percentage_per_trade = 1.0
+minimum_position_value_idr = 50000

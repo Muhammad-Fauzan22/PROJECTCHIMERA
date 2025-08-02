@@ -1,0 +1,8 @@
+# ... (konfigurasi lain di atas) ...
+
+[network]
+# Atur ke true jika Anda ingin menggunakan proxy untuk koneksi ke bursa
+use_proxy = false 
+# Ganti dengan URL proxy Anda jika use_proxy = true
+# Contoh: "http://user:pass@host:port"
+proxy_url = "" 

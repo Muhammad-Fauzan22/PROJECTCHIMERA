@@ -1,0 +1,22 @@
+# Virtual Environment & Caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Database, Logs, & Data Files
+*.db
+*.log
+*.csv
+*.parquet
+
+# Secrets - SANGAT PENTING
+.env
+secrets.vault
+credentials.json
+token.json
+
+# IDE & OS specific
+.vscode/
+.idea/
+.DS_Store

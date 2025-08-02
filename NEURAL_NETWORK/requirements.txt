@@ -1,0 +1,25 @@
+# ==================================================
+# ==      DEPENDENSI PROYEK - PROJECT CHIMERA     ==
+# ==================================================
+
+# --- Core Libraries ---
+ccxt
+pandas
+numpy
+requests
+toml
+
+# --- Google Drive Integration ---
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+
+# --- Web Scraping & Parsing ---
+beautifulsoup4
+playwright
+scrapy
+scrapy-ai
+
+# --- Data & Analisis Tambahan ---
+yfinance
+pywavelets # Untuk kompresi data

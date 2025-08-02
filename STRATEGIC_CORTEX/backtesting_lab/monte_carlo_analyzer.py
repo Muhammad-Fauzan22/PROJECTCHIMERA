@@ -1,0 +1,1 @@
+# Uji ketahanan strategi dengan simulasi Monte Carlo

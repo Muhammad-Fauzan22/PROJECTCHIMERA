@@ -1,0 +1,1 @@
+# Sistem yang menguat saat di bawah tekanan

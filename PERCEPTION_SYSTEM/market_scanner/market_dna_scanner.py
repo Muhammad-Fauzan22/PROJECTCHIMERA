@@ -1,0 +1,1 @@
+# Ekstraksi 'DNA' kondisi pasar saat ini

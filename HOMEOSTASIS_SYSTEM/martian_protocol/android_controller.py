@@ -1,0 +1,1 @@
+# Kontrol via Termux dari HP

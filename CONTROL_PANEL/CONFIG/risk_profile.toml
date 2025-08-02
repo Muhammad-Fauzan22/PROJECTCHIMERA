@@ -1,0 +1,44 @@
+# ==============================================================================
+# ==                FILE KONFIGURASI PROFIL RISIKO - PROJECT CHIMERA          ==
+# ==============================================================================
+#
+# Lokasi: CONTROL_PANEL/CONFIG/risk_profile.toml
+# Deskripsi: Mendefinisikan selera risiko dan aturan manajemen modal robot.
+#
+# PROFIL TARGET: Trader Pemula | MODAL AWAL: Rp 1.000.000
+# ==============================================================================
+
+
+# --- Seksi Manajemen Modal (Capital Management) ---
+# Mengatur bagaimana modal dialokasikan dan digunakan dalam setiap trade.
+[capital_management]
+# Modal awal dalam Rupiah.
+initial_capital = 1000000.0
+# Persentase risiko maksimal per trade (1.0 = 1%).
+risk_per_trade = 1.0
+# Leverage maksimal yang diizinkan (5.0 = 5x).
+max_leverage = 5.0
+
+
+# --- Seksi Pengendalian Kerugian (Loss Control) ---
+# Mendefinisikan aturan "kapan harus keluar" saat rugi.
+[loss_control]
+# Batas kerugian harian maksimal (%). Berfungsi sebagai circuit breaker.
+max_daily_drawdown = 5.0
+# Tipe stop loss: "STATIC" atau "TRAILING".
+stop_loss_type = "TRAILING"
+# Persentase stop loss statis dari harga entry.
+static_stop_loss_pct = 2.0
+# Jarak (%) trailing stop loss dari harga puncak.
+trailing_stop_loss_pct = 2.5
+
+
+# --- Seksi Pengambilan Keuntungan (Profit Taking) ---
+# Mendefinisikan aturan "kapan harus keluar" saat profit.
+[profit_taking]
+# Rasio Risk-Reward (RRR) minimal untuk membuka posisi (2.0 = 1:2).
+minimum_rrr = 2.0
+# Tipe take profit: "STATIC" atau "SCALED".
+take_profit_type = "STATIC"
+# Target take profit statis berdasarkan RRR (3.0 = 1:3).
+static_take_profit_rrr = 3.0

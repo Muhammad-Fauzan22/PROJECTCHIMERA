@@ -1,155 +1,137 @@
 ﻿# -*- coding: utf-8 -*-
 # ==============================================================================
-# == KONFIGURASI UTAMA - PROJECT CHIMERA ==
+# == PROFIL RISIKO vFinal - PROJECT CHIMERA ==
 # ==============================================================================
 #
-# Lokasi: CONTROL_PANEL/CONFIG/chimera_config.toml
-# Deskripsi: File konfigurasi utama untuk seluruh sistem Project Chimera.
-#            Berisi pengaturan sistem, pasar target, dan parameter operasional.
+# Lokasi: CONTROL_PANEL/CONFIG/risk_profile.toml
+# Deskripsi: File konfigurasi yang menyimpan semua aturan manajemen risiko
+#            dan parameter operasional untuk sistem trading.
+#            Versi ini disesuaikan untuk modal awal Rp 1.000.000.
 #
 # ==============================================================================
 
-# --- 1. KONFIGURASI SISTEM UTAMA ---
-[system]
-# Nama proyek
-project_name = "Project Chimera"
-# Mode operasi sistem
-mode = "development" # development | production
-# Interval siklus kognitif (dalam detik)
-cognitive_loop_interval_seconds = 15 # Default: 15 detik
-# Timeout untuk permintaan API eksternal (dalam detik)
-api_timeout_seconds = 10 # Default: 10 detik
-# Jumlah maksimum percobaan ulang untuk permintaan API yang gagal
-api_max_retries = 3 # Default: 3 kali
-# Jeda dasar antar percobaan ulang API (dalam detik)
-api_retry_delay_base_seconds = 1.0 # Default: 1.0 detik
-# Prioritas model LLM untuk AI Brain Router
-llm_priority = ["gemini", "openai", "anthropic", "deepseek"]
+# --- 1. BATASAN MODAL & RISIKO HARIAN ---
+[capital]
+# Modal awal dalam Rupiah (IDR)
+initial_balance_idr = 1000000 # Default: 1.000.000 IDR
 
-# --- 2. KONFIGURASI PASAR TARGET ---
-[market]
-# Daftar aset kripto yang akan diperdagangkan (format CCXT)
-assets = [
-    "BTC/USDT", "ETH/USDT", "BNB/USDT", "SOL/USDT", "XRP/USDT", "DOGE/USDT",
-    "TON/USDT", "ADA/USDT", "SHIB/USDT", "AVAX/USDT", "TRX/USDT", "DOT/USDT",
-    "LINK/USDT", "BCH/USDT", "NEAR/USDT", "MATIC/USDT", "LTC/USDT", "ICP/USDT",
-    "LEO/USDT", "KAS/USDT", "FTM/USDT", "ETC/USDT", "APT/USDT", "HBAR/USDT",
-    "ATOM/USDT", "ARB/USDT", "RNDR/USDT", "FIL/USDT", "SUI/USDT", "PEPE/USDT",
-    "WIF/USDT", "NOT/USDT", "OP/USDT", "TAO/USDT", "UNI/USDT", "INJ/USDT",
-    "GRT/USDT", "VET/USDT", "AAVE/USDT", "SEI/USDT", "MKR/USDT", "TIA/USDT",
-    "ONDO/USDT", "STX/USDT", "LDO/USDT", "FET/USDT", "ENA/USDT", "GALA/USDT",
-    "BONK/USDT", "BEAM/USDT", "JUP/USVT", "ALGO/USDT", "RUNE/USDT", "AGIX/USDT",
-    "PENDLE/USDT", "FTT/USDT", "SAND/USDT", "AXS/USDT", "EGLD/USDT", "MANA/USDT",
-    "DYDX/USDT", "FLOW/USDT", "ORDI/USDT", "SNX/USDT", "GNO/USDT", "ZETA/USDT",
-    "1000SATS/USDT", "AXL/USDT", "MINA/USDT", "AR/USDT", "WLD/USDT", "XMR/USDT",
-    "WOO/USDT", "CRV/USDT", "KSM/USDT", "CAKE/USDT", "ZIL/USDT", "NEO/USDT",
-    "OCEAN/USDT", "ENS/USDT", "DYM/USDT", "WAVES/USDT", "FXS/USDT", "GMX/USDT",
-    "COMP/USDT", "ROSE/USDT", "GMT/USDT", "IO/USDT", "MAV/USDT", "ZEC/USDT",
-    "1INCH/USDT", "BLUR/USDT", "CVX/USDT", "ILV/USDT", "IOTA/USDT", "APE/USDT",
-    "PYTH/USDT", "GTC/USDT", "KAVA/USDT", "MNT/USDT", "MASK/USDT", "ANKR/USDT",
-    "QTUM/USDT", "IMX/USDT", "AUDIO/USDT", "BAT/USDT", "LRC/USDT", "RVN/USDT",
-    "HOT/USDT", "ENJ/USDT", "FLUX/USDT", "CELO/USDT", "ZRX/USDT", "IOTX/USDT",
-    "YFI/USDT", "UMA/USDT", "SUSHI/USDT", "KNC/USDT", "REN/USDT", "TRB/USDT",
-    "BAND/USDT", "BAL/USDT", "STORJ/USVT", "CELR/USDT", "SKL/USDT", "MANTA/USDT",
-    "DASH/USDT", "API3/USDT", "MYRO/USDT", "IOST/USDT", "HIGH/USDT", "ARPA/USDT",
-    "DUSK/USDT", "NTRN/USDT", "CKB/USDT", "CFX/USDT", "LINA/USDT", "MAGIC/USDT",
-    "SXP/USDT", "CTK/USDT", "HOOK/USDT", "PERP/USDT", "ID/USDT", "LQTY/USDT",
-    "OMG/USDT", "AMB/USDT", "CHR/USDT", "EDU/USDT", "COTI/USDT", "LPT/USDT",
-    "LEVER/USDT", "NKN/USDT", "POWR/USDT", "DENT/USDT", "JOE/USDT", "TLM/USDT",
-    "AUCTION/USDT", "RAD/USDT", "CYBER/USDT", "ALPHA/USDT", "XVS/USDT", "OGN/USDT",
-    "MEME/USDT", "STMX/USDT", "PEOPLE/USDT", "BNX/USDT", "BEL/USDT", "USDC/USDT",
-    "T/USDT", "RSR/USDT", "BAKE/USDT", "LIT/USDT", "GAL/USDT", "USTC/USDT",
-    "HFT/USDT", "FRONT/USDT", "UNFI/USDT", "BLZ/USDT", "TRU/USDT", "REEF/USDT",
-    "KEY/USDT", "DGB/USDT", "CVC/USDT", "COMBO/USDT", "DODO/USDT", "ATA/USDT",
-    "RDNT/USDT", "AGLD/USDT", "TOMO/USDT", "ICX/USDT", "MAV/USDT", "ARKM/USDT",
-    "ARK/USDT", "LOOM/USDT", "MDX/USDT", "STEEM/USDT", "ZRX/USDT", "CTSI/USDT",
-    "ONG/USDT", "COS/USDT", "DEFI/USDT", "XTZ/USDT", "QI/USDT", "BTS/USDT",
-    "PHB/USDT", "GLMR/USDT", "RAY/USDT", "FOOTBALL/USDT", "BLUEBIRD/USDT",
-    "POLYX/USDT", "TOKEN/USDT", "KDA/USDT", "SLP/USDT", "SPELL/USDT", "ALICE/USDT",
-    "BURGER/USDT", "PYR/USDT", "GHST/USDT", "TLM/USDT", "DAR/USDT", "VOXEL/USDT",
-    "AXL/USDT", "GLM/USDT", "FIS/USDT", "OAX/USDT", "WAN/USDT", "HIFI/USDT",
-    "PROS/USDT", "VITE/USDT", "FOR/USDT", "PNT/USDT", "MBOX/USDT", "LAZIO/USDT",
-    "PORTO/USDT", "SANTOS/USDT", "PSG/USDT", "JUV/USDT", "ASR/USDT", "OG/USDT",
-    "ALPINE/USDT", "WING/USDT", "FIRO/USDT", "TFUEL/USDT", "AKRO/USDT", "UTK/USDT",
-    "SFP/USDT"
-]
-# Pasangan fiat untuk konversi nilai portofolio (jika diperlukan)
-fiat_currency = "IDR" # Default: IDR (Rupiah Indonesia)
-
-# --- 3. KONFIGURASI LOGGING ---
-[logging]
-# Tingkat logging (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-log_level = "INFO" # Default: INFO
-# Path file log (relatif terhadap root proyek)
-log_file_path = "COLLECTIVE_MEMORY/chimera_main.log" # Default: COLLECTIVE_MEMORY/chimera_main.log
-
-# --- 4. KONFIGURASI GOOGLE DRIVE (COLLECTIVE MEMORY) ---
-[gdrive]
-# ID folder Google Drive untuk menyimpan data mentah
-raw_data_folder_id = "1d3Cz6CaSY-tIf9hnahcjTKXIn66G0QHz" # Ganti dengan ID folder Anda
-# ID folder Google Drive untuk menyimpan hasil analisis
-analysis_results_folder_id = "15kHNTG38UWjJSL8T0SvZ01Hi1-V5vXn7" # Ganti dengan ID folder Anda
-# ID folder Google Drive untuk menyimpan laporan performa
-performance_reports_folder_id = "1NAU8O0ZYeJKAx83u9-Z1eZ9S949c6e1W" # Ganti dengan ID folder Anda
-
-# --- 5. KONFIGURASI RISIKO (Referensi untuk RiskManagementAgent) ---
-[risk_management]
-# Persentase risiko maksimum per perdagangan (dari total modal)
+# Risiko maksimum yang dapat ditanggung per perdagangan (dalam persen dari modal total)
+# Contoh: 1.0% berarti risiko maksimal Rp 10.000 per perdagangan
 max_risk_per_trade_percent = 1.0 # Default: 1.0%
-# Jumlah maksimum posisi terbuka simultan
-max_open_positions = 5 # Default: 5
-# Batas stop-loss dinamis berdasarkan ATR
-atr_multiplier_for_stop_loss = 2.0 # Default: 2.0
-# Batas leverage maksimum
-max_leverage = 10 # Default: 10x
 
-# --- 6. KONFIGURASI POSISI (Referensi untuk ExecutionAgent) ---
+# Batas maksimum kerugian harian (drawdown) dalam persen dari modal awal
+# Contoh: 5.0% berarti sistem akan berhenti jika rugi harian mencapai Rp 50.000
+daily_drawdown_limit_percent = 5.0 # Default: 5.0%
+
+# Batas maksimum kerugian mingguan (drawdown) dalam persen dari modal awal
+# Contoh: 10.0% berarti sistem akan berhenti jika rugi mingguan mencapai Rp 100.000
+weekly_drawdown_limit_percent = 10.0 # Default: 10.0%
+
+# --- 2. UKURAN POSISI & LEVERAGE ---
 [position_sizing]
-# Metode perhitungan ukuran posisi (fixed_value | percent_risk | kelly_criterion | volatility_adjusted)
+# Metode perhitungan ukuran posisi
+# Pilihan: fixed_value | percent_risk | kelly_criterion | volatility_adjusted
 method = "percent_risk" # Default: percent_risk
+
 # Nilai tetap ukuran posisi (jika method = fixed_value)
 fixed_position_value_idr = 100000 # Default: 100.000 IDR
-# Persentase modal yang digunakan per perdagangan (jika method = percent_risk)
+
+# Persentase modal dasar yang digunakan per perdagangan (jika method = percent_risk)
+# Ini akan disesuaikan oleh manajemen risiko berdasarkan volatilitas dan edge score
 base_percentage_per_trade = 1.0 # Default: 1.0%
+
 # Batas minimum nilai posisi (untuk mencegah order terlalu kecil)
 minimum_position_value_idr = 50000 # Default: 50.000 IDR
 
-# --- 7. KONFIGURASI DATA INGESTION ---
-[data_ingestion]
-# Target aset untuk ingestion engine
-target_assets = ["BTC/USDT", "ETH/USDT"] # Default hanya BTC & ETH untuk ingestion
-# Konfigurasi untuk kolektor OHLCV
-[collectors.ohlcv]
-enabled = true
-timeframe = "1h"
-limit = 100 # Jumlah candle yang diambil
-# Konfigurasi untuk kolektor berita
-[collectors.news]
-enabled = true
-sources = ["NewsAPI", "TheNewsAPI"] # Daftar sumber berita
-query = "cryptocurrency" # Kata kunci pencarian default
+# Batas maksimum nilai posisi (untuk mencegah overexposure)
+maximum_position_value_idr = 5000000 # Default: 5.000.000 IDR
 
-# --- 8. KONFIGURASI ANALYSIS PILLARS ---
-[analysis_pillars]
-# Makroekonomi
-[analysis_pillars.macroeconomics]
-enabled = true
-schedule_cron = "0 1 * * *" # Setiap hari jam 1 pagi UTC
-# Mikrostruktur Pasar
-[analysis_pillars.microstructure]
-enabled = true
-schedule_cron = "*/15 * * * *" # Setiap 15 menit
-# Teknikal Multiframe
-[analysis_pillars.technical_multiframe]
-enabled = true
-schedule_cron = "*/5 * * * *" # Setiap 5 menit
-# Fundamental On-Chain
-[analysis_pillars.fundamental_onchain]
-enabled = true
-schedule_cron = "0 */1 * * *" # Setiap jam
-# Psikologi Pasar
-[analysis_pillars.market_psychology]
-enabled = true
-schedule_cron = "*/30 * * * *" # Setiap 30 menit
+# --- 3. MANAJEMEN LEVERAGE ---
+[leverage]
+# Batas leverage maksimum yang diizinkan
+max_allowed_leverage = 10 # Default: 10x
+
+# Leverage default untuk perdagangan
+default_leverage = 5 # Default: 5x
+
+# --- 4. STOP-LOSS & TAKE-PROFIT ---
+[stop_loss_take_profit]
+# Multiplier ATR untuk menentukan jarak stop-loss dinamis
+# Contoh: 2.0 berarti stop-loss ditempatkan 2x ATR dari entry price
+atr_multiplier_for_stop_loss = 2.0 # Default: 2.0
+
+# Rasio Risk:Reward minimum yang diperlukan untuk membuka posisi
+# Contoh: 1:3 berarti potensi profit harus 3x lebih besar dari potensi kerugian
+min_risk_reward_ratio = 3.0 # Default: 3.0
+
+# --- 5. PORTOFOLIO & DIVERSIFIKASI ---
+[portfolio]
+# Jumlah maksimum posisi terbuka simultan
+max_open_positions = 5 # Default: 5
+
+# Batas maksimum korelasi antar aset dalam portofolio
+# Contoh: 0.7 berarti hindari memiliki 2 aset dengan korelasi > 0.7
+max_correlation_between_assets = 0.7 # Default: 0.7
+
+# Wajibkan diversifikasi portofolio?
+diversification_required = true # Default: true
+
+# --- 6. PROTEKSI KHUSUS BINANCE ---
+[binance_protections]
+# Batas ADL Rank Binance (1 = risiko tertinggi)
+# Jika posisi Anda memiliki ADL Rank 1, pertimbangkan untuk menutup atau mengurangi ukuran
+adl_rank_safety_threshold = 5 # Default: 5
+
+# Penyimpangan harga mark vs harga terakhir yang diizinkan (%)
+# Jika >1%, risiko likuidasi palsu meningkat
+mark_price_deviation_tolerance_percent = 1.0 # Default: 1.0%
+
+# Batas minimum saldo dana asuransi Binance (BTC)
+# Jika <0.5 BTC, risiko socialized loss meningkat
+insurance_fund_balance_minimum_btc = 0.5 # Default: 0.5 BTC
+
+# --- 7. MANAJEMEN RISIKO BERDASARKAN VOLATILITAS ---
+[volatility_risk_management]
+# Periode lookback untuk menghitung ATR (Average True Range)
+atr_lookback_period = 14 # Default: 14
+
+# Threshold volatilitas tinggi berdasarkan ATR
+# Jika ATR > threshold ini, kurangi ukuran posisi atau hindari perdagangan
+high_volatility_atr_threshold = 0.05 # Default: 5% dari harga aset
+
+# --- 8. MANAJEMEN RISIKO BERDASARKAN SENTIMEN ---
+[sentiment_risk_management]
+# Threshold Fear & Greed Index untuk risiko tinggi
+# Jika index <30 (Fear), pertimbangkan risiko lebih tinggi
+fear_greed_fear_threshold = 30 # Default: 30
+
+# Threshold Fear & Greed Index untuk euforia berlebihan
+# Jika index >70 (Greed), pertimbangkan profit taking atau penurunan leverage
+fear_greed_greed_threshold = 70 # Default: 70
+
+# --- 9. MANAJEMEN RISIKO BERDASARKAN EVENT ---
+[event_based_risk_management]
+# Daftar event berisiko tinggi (dalam format regex atau keyword)
+high_risk_events = [
+    "FED meeting",
+    "CPI release",
+    "NFP report",
+    "SEC lawsuit",
+    "major hack",
+    "black swan"
+]
+
+# Tindakan otomatis saat event berisiko tinggi terdeteksi
+# Pilihan: reduce_leverage | close_positions | hold_only
+action_on_high_risk_event = "reduce_leverage" # Default: reduce_leverage
+
+# --- 10. PROTEKSI ANTI-BLOWUP ---
+[anti_blowup_protocols]
+# Batas drawdown harian yang memicu circuit breaker
+circuit_breaker_daily_drawdown_percent = 7.0 # Default: 7.0%
+
+# Tindakan saat circuit breaker dipicu
+# Pilihan: halt_trading | reduce_position_size | close_all_positions
+circuit_breaker_action = "halt_trading" # Default: halt_trading
 
 # --- AKHIR KONFIGURASI ---
